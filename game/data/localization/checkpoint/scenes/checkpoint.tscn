@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://c16v0t0eyk2v6"]
+
+[ext_resource type="Script" uid="uid://3lm4x5jqu13s" path="res://game/data/localization/checkpoint/scripts/checkpoint.gd" id="1_psra6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tc4cu"]
+
+[node name="Checkpoint" type="Area2D"]
+script = ExtResource("1_psra6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_tc4cu")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

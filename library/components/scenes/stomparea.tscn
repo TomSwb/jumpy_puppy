@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c76rahpqedtce"]
+
+[ext_resource type="Script" uid="uid://dbxss6agypa0s" path="res://systems/game_state/scripts/stomparea.gd" id="1_76c7o"]
+
+[node name="Stomparea" type="Area2D"]
+script = ExtResource("1_76c7o")

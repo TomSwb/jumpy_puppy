@@ -1,0 +1,132 @@
+[gd_scene load_steps=19 format=3 uid="uid://c1dbr5jglfoiu"]
+
+[ext_resource type="Script" uid="uid://by17pi0ajkkms" path="res://entities/enemies/rat/scripts/rat.gd" id="1_2l7g6"]
+[ext_resource type="Texture2D" uid="uid://bgqdoh4w86ytf" path="res://entities/enemies/rat/sprites/rat-dying.png" id="1_pxby2"]
+[ext_resource type="Texture2D" uid="uid://bl5y4rt6qhrpm" path="res://entities/enemies/rat/sprites/rat.png" id="2_2l7g6"]
+[ext_resource type="PackedScene" uid="uid://c76rahpqedtce" path="res://library/components/scenes/stomparea.tscn" id="4_kva05"]
+[ext_resource type="PackedScene" uid="uid://duynrtdq5oj1i" path="res://library/components/scenes/damageararea.tscn" id="5_yg7nr"]
+[ext_resource type="PackedScene" uid="uid://b253ldgyirwf7" path="res://library/components/scenes/health.tscn" id="7_y1hjm"]
+[ext_resource type="Script" uid="uid://p2s8alwqckia" path="res://entities/enemies/rat/scripts/health-rat.gd" id="8_381fq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tpmrm"]
+radius = 1.9457985
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kva05"]
+atlas = ExtResource("1_pxby2")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yg7nr"]
+atlas = ExtResource("1_pxby2")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y1hjm"]
+atlas = ExtResource("1_pxby2")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yhvk6"]
+atlas = ExtResource("2_2l7g6")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pxby2"]
+atlas = ExtResource("2_2l7g6")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2l7g6"]
+atlas = ExtResource("2_2l7g6")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tpmrm"]
+atlas = ExtResource("2_2l7g6")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kva05"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kva05")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yg7nr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y1hjm")
+}],
+"loop": false,
+"name": &"dying",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yhvk6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pxby2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2l7g6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tpmrm")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yg7nr"]
+size = Vector2(49.741077, 8.439459)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tpmrm"]
+size = Vector2(14, 4)
+
+[node name="rat" type="CharacterBody2D" groups=["rats"]]
+light_mask = 3
+visibility_layer = 3
+z_index = 1
+scale = Vector2(2, 2)
+script = ExtResource("1_2l7g6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 1
+position = Vector2(0, -2)
+scale = Vector2(3.083567, 1.0206059)
+shape = SubResource("CircleShape2D_tpmrm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_kva05")
+animation = &"dying"
+autoplay = "walk"
+
+[node name="RayCast2D_Left" type="RayCast2D" parent="."]
+position = Vector2(0, -2.9999995)
+rotation = -2.693043
+target_position = Vector2(-11.714, 5.637569)
+collision_mask = 255
+
+[node name="RayCast2D_Right" type="RayCast2D" parent="."]
+position = Vector2(0, -2.9999995)
+rotation = -2.693043
+target_position = Vector2(12.615077, -6.0712266)
+collision_mask = 255
+
+[node name="HealthRat" parent="." instance=ExtResource("7_y1hjm")]
+script = ExtResource("8_381fq")
+health = 2
+
+[node name="Stomparea" parent="." instance=ExtResource("4_kva05")]
+position = Vector2(0, -4)
+bounce = 400
+damages_taken = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stomparea"]
+position = Vector2(0, -7)
+scale = Vector2(0.6835397, 0.09440042)
+shape = SubResource("RectangleShape2D_yg7nr")
+
+[node name="AttackArea" parent="." instance=ExtResource("5_yg7nr")]
+scale = Vector2(-1.0990359, 1.063493)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_tpmrm")

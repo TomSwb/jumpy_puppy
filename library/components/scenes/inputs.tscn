@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://c63ceu2i8kpra"]
+
+[ext_resource type="Script" uid="uid://d03oh08vr88t7" path="res://library/components/scripts/inputs.gd" id="1_6v67p"]
+[ext_resource type="Script" uid="uid://b3cp881lbsuy8" path="res://library/resources/inputs-data.gd" id="2_wj6ny"]
+
+[sub_resource type="Resource" id="Resource_n0f6v"]
+script = ExtResource("2_wj6ny")
+use_desktop_input = false
+metadata/_custom_type_script = "uid://b3cp881lbsuy8"
+
+[node name="Inputs" type="Node"]
+script = ExtResource("1_6v67p")
+input_var = SubResource("Resource_n0f6v")

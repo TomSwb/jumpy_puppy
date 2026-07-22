@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://dm687hb6qo006"]
+
+[ext_resource type="Script" uid="uid://dyqpq0644g2d0" path="res://library/components/scripts/enemi-movemenents.gd" id="1_2ht1s"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5fyqq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2ht1s"]
+animations = []
+
+[node name="enemi" type="CharacterBody2D"]
+script = ExtResource("1_2ht1s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5fyqq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_2ht1s")
+animation = &""
+
+[node name="RayCast2D_Left" type="RayCast2D" parent="."]
+position = Vector2(0, -2.9999995)
+rotation = -2.693043
+target_position = Vector2(-11.714, 5.637569)
+collision_mask = 255
+
+[node name="RayCast2D_Right" type="RayCast2D" parent="."]
+position = Vector2(0, -2.9999995)
+rotation = -2.693043
+target_position = Vector2(12.615077, -6.0712266)
+collision_mask = 255

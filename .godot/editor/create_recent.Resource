@@ -1,0 +1,2 @@
+InputResource
+Resource

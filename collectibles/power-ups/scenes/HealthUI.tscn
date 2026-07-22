@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://1dxw0e4drx1n"]
+
+[ext_resource type="Script" uid="uid://caterhb18nyhj" path="res://collectibles/power-ups/scripts/health_ui.gd" id="1_asxsk"]
+[ext_resource type="Texture2D" uid="uid://bytk54653hrfl" path="res://collectibles/power-ups/assets/health-heart.png" id="2_asxsk"]
+
+[node name="HealthUi" type="Control" node_paths=PackedStringArray("heart_container")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 448.0
+offset_bottom = 64.0
+script = ExtResource("1_asxsk")
+heart_texture = ExtResource("2_asxsk")
+heart_container = NodePath("GridContainer")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_right = 448.0
+offset_bottom = 64.0
+columns = 20

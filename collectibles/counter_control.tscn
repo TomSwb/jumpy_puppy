@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://dusa4tqb1j0s1"]
+
+[ext_resource type="Script" uid="uid://gf0n1asfkpo8" path="res://collectibles/counter_control.gd" id="1_5q6tt"]
+[ext_resource type="PackedScene" uid="uid://dje4o42qsqp81" path="res://collectibles/counter.tscn" id="2_0p0fd"]
+[ext_resource type="Texture2D" uid="uid://cfsyfkatnlgcf" path="res://collectibles/currencies/sprites/bones.png" id="3_1gsxu"]
+[ext_resource type="Texture2D" uid="uid://dkaqxgbqxwnb5" path="res://entities/npcs/sprites/kitten.png" id="4_h6hmf"]
+
+[node name="CounterControl" type="Control"]
+z_index = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5q6tt")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 16.0
+theme_override_constants/separation = 40
+
+[node name="Bones" parent="HBoxContainer" instance=ExtResource("2_0p0fd")]
+layout_mode = 2
+icon_texture = ExtResource("3_1gsxu")
+
+[node name="split" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Kittens" parent="HBoxContainer" instance=ExtResource("2_0p0fd")]
+layout_mode = 2
+icon_texture = ExtResource("4_h6hmf")

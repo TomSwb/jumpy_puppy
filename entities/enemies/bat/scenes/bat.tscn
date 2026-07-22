@@ -1,0 +1,90 @@
+[gd_scene load_steps=13 format=3 uid="uid://h4kk1gjgawp0"]
+
+[ext_resource type="Texture2D" uid="uid://biid1oaf3vhc" path="res://entities/enemies/bat/sprites/bat.png" id="1_qaie0"]
+[ext_resource type="Texture2D" uid="uid://dvusv48puobyf" path="res://entities/enemies/bat/sprites/bat-dying.png" id="1_shxp5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxbuc"]
+atlas = ExtResource("1_shxp5")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ldumh"]
+atlas = ExtResource("1_shxp5")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o8g2a"]
+atlas = ExtResource("1_shxp5")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a102k"]
+atlas = ExtResource("1_shxp5")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_shxp5"]
+atlas = ExtResource("1_qaie0")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5wldc"]
+atlas = ExtResource("1_qaie0")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dw4ho"]
+atlas = ExtResource("1_qaie0")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5tteu"]
+atlas = ExtResource("1_qaie0")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cxbuc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cxbuc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ldumh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o8g2a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a102k")
+}],
+"loop": true,
+"name": &"dying",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_shxp5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5wldc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dw4ho")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5tteu")
+}],
+"loop": true,
+"name": &"fyling",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ldumh"]
+radius = 3.0
+height = 6.0
+
+[node name="bat" type="CharacterBody2D"]
+
+[node name="batAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_cxbuc")
+animation = &"dying"
+autoplay = "fyling"
+frame_progress = 0.017029949
+
+[node name="batCollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -1)
+shape = SubResource("CapsuleShape2D_ldumh")

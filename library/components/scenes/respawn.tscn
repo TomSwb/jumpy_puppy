@@ -1,0 +1,36 @@
+[gd_scene load_steps=2 format=3 uid="uid://btsfdowkvokxx"]
+
+[sub_resource type="GDScript" id="GDScript_ug54o"]
+script/source = "# respawn_component.gd
+extends Node
+class_name RespawnComponent
+
+@export var state_component: StateComponent
+@export var death_component: DeathComponent
+@export var spawn_position: Vector2
+@export var respawn_delay: float = 0.5
+
+var last_checkpoint_pos: Vector2
+
+func _ready():
+	last_checkpoint_pos = spawn_position
+	if death_component:
+		death_component.died.connect(_on_entity_died)
+
+func set_checkpoint(pos: Vector2):
+	last_checkpoint_pos = pos
+
+func _on_entity_died():
+	_respawn_after_delay()
+
+func _respawn_after_delay() -> void:
+	await get_tree().create_timer(respawn_delay).timeout
+	get_parent().global_position = last_checkpoint_pos
+	if state_component:
+		state_component.reset_state()
+	if death_component:
+		death_component.is_dead = false
+"
+
+[node name="Respawn" type="Node"]
+script = SubResource("GDScript_ug54o")

@@ -1,0 +1,115 @@
+[gd_scene load_steps=16 format=3 uid="uid://dmp1e380o4k1a"]
+
+[ext_resource type="Script" uid="uid://curu0s3pn1sbn" path="res://collectibles/currencies/scripts/bones.gd" id="1_6i2ux"]
+[ext_resource type="Texture2D" uid="uid://msfoq7uvate6" path="res://collectibles/currencies/sprites/bones-turning.png" id="2_54bn7"]
+[ext_resource type="AudioStream" uid="uid://b0xyr08wuhn5e" path="res://systems/audios/sfxs/pickup-bones.wav" id="3_8lb8v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vo17x"]
+atlas = ExtResource("2_54bn7")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_71oql"]
+atlas = ExtResource("2_54bn7")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4auoq"]
+atlas = ExtResource("2_54bn7")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1h68o"]
+atlas = ExtResource("2_54bn7")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hoxbf"]
+atlas = ExtResource("2_54bn7")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cuwx3"]
+atlas = ExtResource("2_54bn7")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u42ae"]
+atlas = ExtResource("2_54bn7")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gqqgi"]
+atlas = ExtResource("2_54bn7")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r0eq8"]
+atlas = ExtResource("2_54bn7")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l4mrp"]
+atlas = ExtResource("2_54bn7")
+region = Rect2(144, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_65nl8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vo17x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_71oql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4auoq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1h68o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hoxbf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cuwx3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u42ae")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gqqgi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r0eq8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l4mrp")
+}],
+"loop": true,
+"name": &"turning",
+"speed": 7.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kebo4"]
+radius = 3.0
+height = 10.0
+
+[node name="Bones" type="Area2D" groups=["bones"]]
+collision_mask = 2
+script = ExtResource("1_6i2ux")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_65nl8")
+animation = &"turning"
+autoplay = "turning"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_kebo4")
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="pick_up" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("3_8lb8v")
+volume_db = 5.0
+pitch_scale = 2.5
+bus = &"sfx"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
