@@ -1,4 +1,2 @@
 res://game/levels/level2-sky/level2.tscn
-res://game/levels/level2-sky/scripts/level_2.gd
-res://game/levels/level1-grass/level_1.tscn
-res://game/levels/level1-grass/scripts/level_1.gd
+res://entities/players/scenes/brownie.tscn

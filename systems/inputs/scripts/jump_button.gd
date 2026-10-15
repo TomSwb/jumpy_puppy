@@ -1,7 +1,7 @@
 extends TouchScreenButton
 class_name JumpButton
 
-@export var action = "jump"
+@export var move = "jump"
 
 func _ready():
 	# Connect signals to methods in this node
@@ -9,11 +9,11 @@ func _ready():
 	self.button_up.connect(_on_button_up)
 
 func _on_button_down():
-	if action != "":
-		Input.action_press(action)
+	if move != "":
+		Input.action_press(move)
 		print("jump")
 
 func _on_button_up():
-	if action != "":
-		Input.action_release(action)
+	if move != "":
+		Input.action_release(move)
 		print("jump")
