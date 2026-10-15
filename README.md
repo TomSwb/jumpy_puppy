@@ -66,3 +66,8 @@ A Web export preset is included.
 - Merge the two level scripts into one shared base level, and the two enemy controllers into one.
 - Remove the unused `stomp_attack` component.
 - Publish a playable web build on itch.io.
+
+## AI use
+
+- **Code:** the game code (GDScript, scenes, components) is written by hand. AI assistants were used as a learning aid, to explain Godot concepts and debug ideas, not to generate the game code.
+- **Documentation:** this README was drafted with Claude (Anthropic) from the project's code, then reviewed and corrected by me. Every feature described was checked against the scripts.
