@@ -1,0 +1,7 @@
+# Godot 4 editor cache and import data (regenerated automatically)
+.godot/
+/android/
+
+# OS files
+.DS_Store
+Thumbs.db
