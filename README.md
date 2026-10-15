@@ -4,7 +4,7 @@ A 2D pixel-art platformer made with **Godot 4.5**. Guide Brownie the puppy throu
 
 > **Status: work in progress.** Level 1 (grass) is playable from start to finish. Level 2 (sky) is in progress.
 
-<!-- Add a screenshot or GIF here: ![Jumpy Puppy level 1](docs/screenshot.png) -->
+![Jumpy Puppy level 1](docs/screenshot.png)
 
 ## Gameplay
 
