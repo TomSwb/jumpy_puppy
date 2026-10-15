@@ -3,6 +3,8 @@
 A 2D pixel-art platformer made with **Godot 4.5**. Guide Brownie the puppy through the level, follow the meows to rescue lost kittens, collect bones and stomp on rats.
 
 > **Status: work in progress.** Level 1 (grass) is playable from start to finish. Level 2 (sky) is in progress.
+>
+> 🎮 **[Play it in your browser on itch.io](https://tombitminded.itch.io/jumpy-puppy)**
 
 ![Jumpy Puppy level 1](docs/screenshot.png)
 
@@ -54,18 +56,23 @@ Sprite source files (`.ase`) are included next to the exported PNGs.
 
 ## Run it
 
+The quickest way is the [browser version on itch.io](https://tombitminded.itch.io/jumpy-puppy). To run it from source:
+
 1. Install [Godot 4.5](https://godotengine.org/) (the project uses the GL Compatibility renderer).
 2. Open `project.godot` in Godot.
 3. Press **F5**.
 
 A Web export preset is included.
 
+## AI use
+
+The game itself (code and pixel art) is my own work. I used AI (Claude) for documentation only: it helped me write this README, and every statement in it was checked against the code.
+
 ## Next steps
 
 - Finish level 2 (sky).
 - Merge the two level scripts into one shared base level, and the two enemy controllers into one.
 - Remove the unused `stomp_attack` component.
-- Publish a playable web build on itch.io.
 
 ## AI use
 
