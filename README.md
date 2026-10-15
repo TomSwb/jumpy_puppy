@@ -64,10 +64,6 @@ The quickest way is the [browser version on itch.io](https://tombitminded.itch.i
 
 A Web export preset is included.
 
-## AI use
-
-The game itself (code and pixel art) is my own work. I used AI (Claude) for documentation only: it helped me write this README, and every statement in it was checked against the code.
-
 ## Next steps
 
 - Finish level 2 (sky).
